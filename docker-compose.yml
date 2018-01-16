@@ -1,0 +1,10 @@
+version: '3'
+services:
+  mongo:
+    image: 'mongo:3.6.2'
+    volumes:
+    - ./data:/data/db
+  theke:
+    build: ./src
+    ports:
+    - "8090:80"
