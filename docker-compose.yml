@@ -1,10 +1,16 @@
-version: '3'
+version: '2'
 services:
+  #Mongo database
   mongo:
     image: 'mongo:3.6.2'
     volumes:
-    - ./data:/data/db
+      - /tmp/data:/data/db
+  #Theke
   theke:
     build: .
     ports:
-    - "8090:80"
+      - "8090:80"
+    depends_on:
+      - mongo
+    environment:
+      - NODE_ENV=production
